@@ -3,9 +3,12 @@
 
 import cv2
 import flask
+from flask_cors import CORS
 
 app = flask.Flask(__name__)
+CORS(app)
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
 @app.route('/')
 def hello_world():
